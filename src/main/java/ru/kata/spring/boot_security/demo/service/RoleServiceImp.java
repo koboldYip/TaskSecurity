@@ -18,6 +18,7 @@ public class RoleServiceImp implements RoleService {
     }
 
     @Override
+    @Transactional
     public void add(Role role) {
         repository.save(role);
     }
@@ -33,6 +34,7 @@ public class RoleServiceImp implements RoleService {
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
         repository.deleteById(id);
     }
