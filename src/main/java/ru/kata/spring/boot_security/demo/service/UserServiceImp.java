@@ -55,10 +55,10 @@ public class UserServiceImp implements UserService {
     @Override
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = repository.findByUsername(username);
-        user.getRoles().size();
         if (user == null) {
             throw new UsernameNotFoundException("Failed to retrieve user: " + username);
         }
+        user.getRoles().size();
         return user;
     }
 }
