@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title></title>
@@ -10,6 +10,7 @@
     <a href="#" th:href="@{/logout}">Log Out</a>
 </div>
 <div align="center">
+    <h3><a href="/admin/new">New User</a></h3>
     <table border="1">
         <thead>
         <tr>
@@ -21,20 +22,20 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:object="${user}">
+        <tr th:each="user : ${users}">
             <td th:text="${user.getId()}"></td>
             <td th:text="${user.getUsername()}"></td>
             <td th:text="${user.getFirstName()}"></td>
             <td th:text="${user.getLastName()}"></td>
             <td th:text="${user.getEmail()}"></td>
+            <td th:text="${user.getRoles()}"></td>
+            <td>
+                <a th:href="@{/admin/delete(userId=${user.id})}">Delete</a>
+                <a th:href="@{/admin/edit(userId=${user.id})}">Edit</a>
+            </td>
         </tr>
         </tbody>
     </table>
-    <label> Roles:
-        <div th:each="role : ${user.getRoles()}">
-            <tr th:text=" ${role}">roles</tr>
-        </div>
-    </label>
 </div>
 </body>
 </html>
